@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<project name="MMURLDownloader" default="compile" basedir=".">
+
+	<echo message="Running the build.xml configuration script"/>
+	<target name="compile" description="compilar el código java a un archivo class">
+		<mkdir dir="bin"/>
+		<javac srcdir="src" destdir="bin"/>
+	</target>
+    <target name="clean" description="borrar archivos de clases y temporales">
+        <delete dir="bin"/>
+    </target>
+    <target name="jar" depends="compile" description="crear un archivo Jar para la aplicación">
+        <jar destfile="URLDownloader.jar">
+            <fileset dir="bin" includes="**/*.class"/>
+            <manifest>
+                <attribute name="Main-Class" value="edu.macesoft.mmurldownloader.executables.Test01Exe"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
