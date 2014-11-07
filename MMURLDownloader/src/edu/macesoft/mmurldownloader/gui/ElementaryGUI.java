@@ -1,6 +1,7 @@
 package edu.macesoft.mmurldownloader.gui;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,8 +21,10 @@ public abstract class ElementaryGUI
 			System.out.println(">> Enter source URL file        :");			
 			inputData.setSourceUrl(userInputData.readLine());
 			
-			System.out.println(">> Enter destination local file :");
-			inputData.setDestinationFile(userInputData.readLine());
+			String inputFileName = new File(inputData.getSourceUrl()).getName();
+			
+			System.out.println(">> Enter destination directory :");
+			inputData.setDestinationFile(userInputData.readLine() + File.separator + inputFileName);
 			
 			System.out.println(">> Proceed (Y/N)? :");
 			if (userInputData.readLine().compareToIgnoreCase("Y") == 0)
